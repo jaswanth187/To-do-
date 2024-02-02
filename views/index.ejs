@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="main.css" />
+  </head>
+  <body>
+    <div class="mid">
+      <div class="part1">
+        <h1>My To-Do List</h1>
+        <form action="/add" method="post">
+          <input
+            type="text"
+            id="taskInput"
+            name="new_item"
+            placeholder="Add a task..."
+          />
+          <input type="submit" value="Add Task" />
+        </form>
+      </div>
+      <div class="part2">
+        <h1>Todo's</h1>
+        <% if (locals.result) { %> <% result.forEach(function(todo) { %>
+        <div class="box">
+          <form action="/delete" method="post">
+            <audio id="audio" src="pop.mp3"></audio>
+            <input
+              type="checkbox"
+              onchange="this.form.submit()"
+              name="deleteItemId"
+              value="<%= todo.id %>"
+              class="styled-checkbox"
+              onclick="play()"
+            />
+          </form>
+          <p id="title<%=todo.id%>" class="bottom-border-input">
+            <%= todo.title %>
+          </p>
+          <!-- <li><%= todo.title %></li> -->
+          <form class="edit" action="/edit" method="post">
+            <input type="hidden" name="updatedItemId" value="<%= todo.id %>" />
+            <input
+              type="text"
+              id="input<%= todo.id %>"
+              name="updatedItemTitle"
+              value="<%= todo.title %>"
+              autocomplete="off"
+              autofocus
+              hidden="true"
+              class="bottom-border-input"
+              oninput="checkInput(this)"
+            />
+
+            <button id="done<%= todo.id %>" class="edit" type="submit" hidden>
+              ✔
+            </button>
+          </form>
+          <button
+            id="edit<%= todo.id %>"
+            class="edit"
+            onclick="handler('<%= todo.id %>')"
+          >
+            <img class="icon" src="pencil_png.png" alt="pencil image" />
+          </button>
+        </div>
+        <% }); %> <% } %>
+      </div>
+    </div>
+    <script>
+      function handler(id) {
+        var input = document.getElementById("input" + id);
+        var title = document.getElementById("title" + id);
+        var edit = document.getElementById("edit" + id);
+        var done = document.getElementById("done" + id);
+        if (input.hidden) {
+          input.hidden = false;
+          title.hidden = true;
+          edit.hidden = true;
+          done.hidden = false;
+        } else {
+          input.hidden = true;
+          title.hidden = false;
+          edit.hidden = false;
+          done.hidden = true;
+        }
+      }
+
+      function play() {
+        var audio = document.getElementById("audio");
+
+        // Check if the audio is muted
+        if (audio.muted) {
+          // If muted, unmute and play
+          audio.muted = false;
+          audio.play();
+        } else {
+          // If not muted, mute
+          audio.muted = true;
+        }
+      }
+
+      function checkInput(input) {
+        console.log("this function is working");
+        var doneButton =
+          input.parentElement.querySelector("button[id^='done']");
+        console.log(input.value.trim());
+        if (input.value.trim() === "") {
+          doneButton.setAttribute("hidden", true);
+        } else {
+          doneButton.removeAttribute("hidden");
+        }
+      }
+    </script>
+  </body>
+</html>

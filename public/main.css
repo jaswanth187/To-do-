@@ -1,0 +1,136 @@
+* {
+  margin: 0;
+}
+
+body {
+  background: #ebcd92;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+}
+
+h1 {
+  margin: 0; /* Remove default margin for h1 */
+  font-family: "Roboto", sans-serif;
+  font-weight: 700;
+  font-style: normal;
+  margin-top: 10px;
+  filter: drop-shadow(2px 4px 8px #585858);
+}
+
+input[type="submit"] {
+  padding: 10px 20px;
+  margin-left: 1px;
+  font-size: 16px;
+  background-color: #f8d66b;
+  border: 1px solid #ccc;
+  cursor: pointer;
+  box-shadow: rgba(0, 0, 0, 0.5) 0px 5px 15px;
+  color: white;
+  font-family: "Roboto", sans-serif;
+  font-weight: 700;
+  font-style: normal;
+  border-radius: 10px;
+}
+
+input[type="submit"]:hover {
+  background-color: #e0e0e0;
+}
+
+.mid {
+  background: #61a29c;
+  width: 900px;
+  height: 450px;
+  text-align: center;
+  color: white;
+  display: flex;
+  /* flex-direction: row; */
+  /* text-align: center;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center; */
+}
+
+.part1 {
+  flex: 3; /* Takes 60% of the available space */
+  background-color: #61a29c;
+}
+.part2 {
+  flex: 2; /* Takes 40% of the available space */
+  background-color: #fdd97a; /* Set your desired background color */
+}
+#taskInput {
+  border: none;
+  /* color: white; */
+  font-size: 1.2rem;
+  margin-top: 20px;
+  padding: 10px;
+  border-radius: 15px;
+  box-shadow: rgba(0, 0, 0, 0.5) 0px 5px 15px;
+  outline: none; /* Remove focus outline */
+  cursor: pointer;
+}
+
+.box {
+  background-color: white;
+  color: grey;
+  display: flex;
+  flex-direction: row;
+  margin: 5px;
+  width: 75%;
+  height: 35px;
+  border-radius: 10px;
+  padding: 10px;
+  position: relative;
+  margin: 12px 0 0 35px;
+  box-shadow: rgba(0, 0, 0, 0.5) 0px 5px 15px;
+}
+.styled-checkbox {
+  appearance: none; /* Remove default styles */
+  width: 20px; /* Set the width of the checkbox */
+  height: 20px; /* Set the height of the checkbox */
+  border-radius: 50%; /* Make it circular */
+  border: 1px solid grey; /* Set the border color */
+  outline: none; /* Remove focus outline */
+  cursor: pointer; /* Change cursor to pointer on hover */
+  position: absolute;
+  top: 12px;
+  left: 10px;
+  /* Style the checked state */
+  &:checked {
+    background-color: grey; /* Set the background color when checked */
+    border-color: grey; /* Set the border color when checked */
+  }
+}
+
+.icon {
+  height: 20px;
+  width: 20px;
+}
+
+button.edit {
+  border: none;
+  background: none;
+  position: absolute;
+  top: 0;
+  right: 0;
+  margin: 10px 10px 0 0;
+}
+
+.bottom-border-input {
+  border: none; /* Remove the default border */
+  /* border-bottom: 1px solid #61a29c;  */
+  /* Add a bottom border */
+  outline: none; /* Remove the focus outline */
+  position: absolute;
+  top: 0;
+  left: 0;
+  margin: 10px 0 0 50px;
+  font-size: 20px;
+  width: 65%;
+  font-family: "Roboto", sans-serif;
+  font-weight: 400;
+  font-style: normal;
+}
